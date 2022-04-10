@@ -1,7 +1,7 @@
 import { browser, logging } from 'protractor';
 import { AppPage } from './app.po';
 
-describe('workspace-project App', () => {
+describe('Weather Forecasp App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('kl-weather-forecast app is running!');
+    expect(await page.getTitleText()).toEqual('Weather Forecast');
   });
 
   afterEach(async () => {
