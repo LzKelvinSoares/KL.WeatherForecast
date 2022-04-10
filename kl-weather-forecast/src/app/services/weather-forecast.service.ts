@@ -44,7 +44,7 @@ export class WeatherForecastService {
       } else {
         const newDay = new ForecastDay();
         newDay.date = weather.startTime;
-        newDay.name = weather.name.toLocaleLowerCase() != 'this afternoon' ? weather.name : 'Today';
+        newDay.name = weather.name.toLocaleLowerCase() !== 'this afternoon' ? weather.name : 'Today';
         newDay.weatherForecasts = [weather];
         forecastDays.push(newDay);
       }

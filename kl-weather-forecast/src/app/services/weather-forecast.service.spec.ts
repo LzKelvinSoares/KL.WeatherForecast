@@ -47,10 +47,13 @@ describe('WeatherForecastService', () => {
     date3.setDate(11);
 
     const weather1 = new Weather();
+    weather1.name = 'This Afternoon';
     weather1.startTime = date1;
     const weather2 = new Weather();
+    weather2.name = 'Night';
     weather2.startTime = date2;
     const weather3 = new Weather();
+    weather3.name = 'Other day';
     weather3.startTime = date3;
 
     const list = [weather1, weather2, weather3];
