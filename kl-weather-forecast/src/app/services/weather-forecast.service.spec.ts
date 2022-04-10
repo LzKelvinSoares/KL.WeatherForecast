@@ -35,7 +35,7 @@ describe('WeatherForecastService', () => {
     const weather = new Weather();
     weather.startTime = date;
 
-    expect(service._compareDates(forecast, weather)).toBeTruthy();
+    expect(service._compareDates(forecast.date, weather.startTime)).toBeTruthy();
   });
 
   it('should load forecasts by date', () => {

@@ -37,14 +37,14 @@ export class WeatherForecastService {
   _loadForecastsByDate(list: Weather[]): ForecastDay[] {
     const forecastDays = [];
     list.forEach((weather: Weather) => {
-      if (forecastDays.some((f: ForecastDay) => this._compareDates(f, weather))) {
+      if (forecastDays.some((f: ForecastDay) => this._compareDates(f.date, weather.startTime))) {
         forecastDays
-          .find((f: ForecastDay) =>  this._compareDates(f, weather))
+          .find((f: ForecastDay) =>  this._compareDates(f.date, weather.startTime))
           .weatherForecasts.push(weather);
       } else {
         const newDay = new ForecastDay();
         newDay.date = weather.startTime;
-        newDay.name = weather.name;
+        newDay.name = weather.name.toLocaleLowerCase() != 'this afternoon' ? weather.name : 'Today';
         newDay.weatherForecasts = [weather];
         forecastDays.push(newDay);
       }
@@ -52,7 +52,7 @@ export class WeatherForecastService {
     return forecastDays;
   }
 
-  _compareDates(f: ForecastDay, weather: Weather): boolean {
-    return new Date(f.date).setHours(0) === new Date(weather.startTime).setHours(0);
+  _compareDates(date1: Date, date2: Date): boolean {
+    return new Date(date1).setHours(0) === new Date(date2).setHours(0);
   }
 }
