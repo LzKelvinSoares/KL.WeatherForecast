@@ -1,0 +1,50 @@
+@import '../../../assets/variables';
+.forecast-container {
+    border-radius: 8px;
+    border: 1px solid $gray;
+    margin: 10px;
+
+    .forecast-day-title {
+        background-color: $gull-gray;
+        border-bottom: 1px solid $gray;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        display: flex;
+
+        .forecast-day-property {
+            font-weight: 600;
+            padding: 15px 5px;
+            text-align: left;
+        }
+    }
+
+    .forecast-grid-container {
+        border-bottom: 1px solid $gray;
+        display: grid;
+        grid-template-columns: repeat(3, 10%) 50% 20%;
+        padding: 0 5px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .forecast-property {
+            border-right: 1px solid $gray;
+            padding: 5px;
+            &.forecast-image-container {
+                border-right: none;
+                display: flex;
+                .forecast-image {
+                    border-radius: 50%;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}
+
+.loading,
+.error-message {
+    margin: 15px;
+    text-align: center;
+}

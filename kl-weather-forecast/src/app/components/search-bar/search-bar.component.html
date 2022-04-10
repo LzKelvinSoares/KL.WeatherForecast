@@ -1,0 +1,21 @@
+<section class="form-container">
+    <form class="form" #searchForm="ngForm">
+        <div class="input-container">
+        <label for="address">
+            Place your full address:
+        </label>
+        <input
+            class="input-container"
+            id="address"
+            name="address"
+            type="text"
+            [(ngModel)]="weatherForecastService.fullAddress"
+            #address="ngModel"
+            required
+            />
+        </div>
+        <button class="btn"
+            [disabled]="!searchForm.form.valid || weatherForecastService.loading"
+            (click)="weatherForecastService.searchForecast()">Search</button>
+    </form>
+</section>

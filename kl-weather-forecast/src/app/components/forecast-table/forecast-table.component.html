@@ -1,0 +1,34 @@
+<section class="forecast-container" *ngIf="weatherForecastService.forecastDays.length > 0 && !weatherForecastService.errorText" >
+    <div class="forecast-day-grid" *ngFor="let item of weatherForecastService.forecastDays">
+        <div class="forecast-day-title">
+            <div class="forecast-day-name forecast-day-property">{{item.name}}, {{item.date | date}}</div>
+        </div>
+        <div class="forecast-day-weather">
+            <ng-container *ngFor="let forecast of item.weatherForecasts" >
+                <div class="forecast-grid-container">
+                    <div class="forecast-name forecast-property">
+                        {{forecast.isDaytime ? 'Day' : 'Night'}}
+                    </div>
+                    <div class="forecast-temperature forecast-property">
+                        {{forecast.temperature}}°{{forecast.temperatureUnit}}
+                    </div>
+                    <div class="forecast-short-forecast forecast-property">
+                        {{forecast.shortForecast}}
+                    </div>
+                    <div class="forecast-detailed-forecast forecast-property">
+                        {{forecast.detailedForecast}}
+                    </div>
+                    <div class="forecast-image-container forecast-property">
+                        <img class="forecast-image" [src]="forecast.icon" [attr.alt]="forecast.name">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>
+<div class="loading" *ngIf="weatherForecastService.loading" >
+    Loading...
+</div>
+<div class="error-message">
+    {{weatherForecastService.errorText}}
+</div>
